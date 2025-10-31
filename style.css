@@ -1,0 +1,119 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+#game-container {
+    width: 100%;
+    max-width: 700px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+    overflow: hidden; 
+}
+
+/* MODIFIED: Simplified header style to just center the text */
+header {
+    background-color: #4a678a;
+    color: white;
+    padding: 20px 25px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+#status-meters {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    background: #fafafa;
+    border-bottom: 1px solid #eee;
+}
+
+.meter {
+    flex-basis: 150px;
+    text-align: center;
+}
+
+.meter label {
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.meter-bar-outer {
+    background: #e0e0e0;
+    border-radius: 10px;
+    height: 20px;
+    margin-top: 5px;
+    overflow: hidden;
+}
+
+.meter-bar-inner {
+    height: 100%;
+    border-radius: 10px 0 0 10px; 
+    transition: width 0.5s ease;
+}
+
+#env-meter-bar { background-color: #2ecc71; } 
+#eco-meter-bar { background-color: #f1c40f; } 
+#hap-meter-bar { background-color: #3498db; } 
+
+#scenario-container {
+    padding: 25px;
+    font-size: 1.1em;
+    line-height: 1.6;
+    min-height: 100px; /* Gives space for the text */
+}
+
+#choices-container {
+    padding: 25px;
+    padding-top: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.choice-button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    font-size: 1em;
+    font-weight: bold;
+    color: #fff;
+    background-color: #5b8cbe;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.choice-button:hover {
+    background-color: #4a678a;
+}
+
+/* MODIFIED: This should center the spans as a group */
+#last-effect-container {
+    display: flex;
+    justify-content: center; /* This centers the items horizontally */
+    align-items: center;
+    gap: 25px; /* Adds space BETWEEN the items */
+    padding: 0 20px 15px 20px; 
+    font-size: 1.1em;
+    font-weight: bold;
+    min-height: 30px; /* Prevents layout jump */
+}
+
+.effect-span {
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+}

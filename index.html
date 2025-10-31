@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoSim: The 10-Year Challenge</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="game-container">
+        <header>
+            <h1>EcoSim: The 10-Year Challenge</h1>
+        </header>
+
+        <div id="status-meters">
+            <div class="meter">
+                <label>🌳 Environment</label>
+                <div class="meter-bar-outer">
+                    <div id="env-meter-bar" class="meter-bar-inner"></div>
+                </div>
+                <span id="env-value">80%</span>
+            </div>
+            <div class="meter">
+                <label>💰 Economy</label>
+                <div class="meter-bar-outer">
+                    <div id="eco-meter-bar" class="meter-bar-inner"></div>
+                </div>
+                <span id="eco-value">50%</span>
+            </div>
+            <div class="meter">
+                <label>😊 Happiness</label>
+                <div class="meter-bar-outer">
+                    <div id="hap-meter-bar" class="meter-bar-inner"></div>
+                </div>
+                <span id="hap-value">50%</span>
+            </div>
+        </div>
+
+        <div id="last-effect-container"></div>
+
+        <div id="scenario-container">
+            <div id="scenario-image-container">
+                </div>
+            <p id="scenario-text">Welcome, Town Manager! Your first challenge is on its way. Make wise choices for the next 10 years.</p>
+        </div>
+
+        <div id="choices-container">
+            </div>
+        
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
