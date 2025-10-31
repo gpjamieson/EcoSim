@@ -8,48 +8,104 @@
 </head>
 <body>
 
-    <div id="game-container">
-        <header>
-            <h1>EcoSim: The 10-Year Challenge</h1>
-        </header>
+    <!-- Audio elements for the music -->
+    <!-- We set 'loop' so they play forever -->
+    <audio id="menu-music" src="HoliznaPATREON - Lo-Bit 4 ( LoFi , Peaceful ).mp3" loop></audio>
+    <audio id="game-music" src="HoliznaPATREON - Lo-Bit 13 ( LoFi , Chill ).mp3" loop></audio>
 
-        <div id="status-meters">
-            <div class="meter">
-                <label>🌳 Environment</label>
-                <div class="meter-bar-outer">
-                    <div id="env-meter-bar" class="meter-bar-inner"></div>
-                </div>
-                <span id="env-value">80%</span>
-            </div>
-            <div class="meter">
-                <label>💰 Economy</label>
-                <div class="meter-bar-outer">
-                    <div id="eco-meter-bar" class="meter-bar-inner"></div>
-                </div>
-                <span id="eco-value">50%</span>
-            </div>
-            <div class="meter">
-                <label>😊 Happiness</label>
-                <div class="meter-bar-outer">
-                    <div id="hap-meter-bar" class="meter-bar-inner"></div>
-                </div>
-                <span id="hap-value">50%</span>
+    <!-- This container holds all the different "screens" of our app -->
+    <div id="app-container">
+
+        <!-- 0. Pre-Splash Screen (NEW) -->
+        <div id="pre-splash-screen" class="screen">
+            <div class="menu-content">
+                <h1>EcoSim</h1>
+                <p>The 10-Year Challenge</p>
+                <button id="begin-btn" class="menu-button">Click to Begin</button>
             </div>
         </div>
 
-        <div id="last-effect-container"></div>
-
-        <div id="scenario-container">
-            <div id="scenario-image-container">
-                </div>
-            <p id="scenario-text">Welcome, Town Manager! Your first challenge is on its way. Make wise choices for the next 10 years.</p>
+        <!-- 1. Splash Screen (Corrected Name) -->
+        <div id="splash-screen" class="screen">
+            <h1>gpjamieson presents...</h1>
         </div>
 
-        <div id="choices-container">
+        <!-- 2. Title Screen (EcoSim) -->
+        <div id="title-screen" class="screen">
+            <h1>EcoSim</h1>
+            <p>The 10-Year Challenge</p>
+        </div>
+
+        <!-- 3. Main Menu Screen -->
+        <div id="menu-screen" class="screen">
+            <div class="menu-content">
+                <h1>Main Menu</h1>
+                <button id="start-game-btn" class="menu-button">Start Game</button>
+                <button id="music-toggle-btn" class="menu-button toggle-button">Music: ON</button>
+                <button id="sound-toggle-btn" class="menu-button toggle-button">Sound: ON</button>
+                <footer class="credits-footer">
+                    Music: "Lo-Bit 4" & "Lo-Bit 13" by HoliznaPATREON (Free Music Archive), CC BY-NC-ND.
+                </footer>
             </div>
-        
+        </div>
+
+        <!-- 4. The Game Screen (This is our old game-container) -->
+        <div id="game-screen" class="screen">
+            <header>
+                <h1>EcoSim: The 10-Year Challenge</h1>
+            </header>
+
+            <div id="status-meters">
+                <div class="meter">
+                    <label>🌳 Environment</label>
+                    <div class="meter-bar-outer">
+                        <div id="env-meter-bar" class="meter-bar-inner"></div>
+                    </div>
+                    <span id="env-value">80%</span>
+                </div>
+                <div class="meter">
+                    <label>💰 Economy</label>
+                    <div class="meter-bar-outer">
+                        <div id="eco-meter-bar" class="meter-bar-inner"></div>
+                    </div>
+                    <span id="eco-value">50%</span>
+                </div>
+                <div class="meter">
+                    <label>😊 Happiness</label>
+                    <div class="meter-bar-outer">
+                        <div id="hap-meter-bar" class="meter-bar-inner"></div>
+                    </div>
+                    <span id="hap-value">50%</span>
+                </div>
+            </div>
+
+            <div id="last-effect-container"></div>
+
+            <div id="scenario-container">
+                <p id="scenario-text">Loading...</p>
+            </div>
+
+            <div id="choices-container">
+                <!-- Buttons will be dynamically added here by JavaScript -->
+            </div>
+        </div>
+
+        <!-- 5. The End Screen -->
+        <div id="end-screen" class="screen">
+            <div class="menu-content">
+                <h1>10 Years Over!</h1>
+                <p id="end-summary-text">Here's how you did...</p>
+                <button id="play-again-btn" class="menu-button">Play Again</button>
+                <button id="return-menu-btn" class="menu-button">Return to Menu</button>
+                <footer class="credits-footer">
+                    Music: "Lo-Bit 4" & "Lo-Bit 13" by HoliznaPATREON (Free Music Archive), CC BY-NC-ND.
+                </footer>
+            </div>
+        </div>
+
     </div>
 
     <script src="script.js"></script>
 </body>
 </html>
+
