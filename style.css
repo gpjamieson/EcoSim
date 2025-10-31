@@ -38,6 +38,7 @@ body {
     visibility: hidden;
     transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
     box-sizing: border-box; /* Ensures padding is included in height/width */
+    overflow-y: auto; /* <-- THIS IS THE FIX. Allows internal scrolling if needed */
 }
 
 .screen.active {
