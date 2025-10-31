@@ -38,7 +38,7 @@ body {
     visibility: hidden;
     transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
     box-sizing: border-box; /* Ensures padding is included in height/width */
-    overflow-y: auto; /* <-- THIS IS THE FIX. Allows internal scrolling if needed */
+    /* overflow-y: auto;  <-- REMOVED THIS LINE. We will scroll internally. */
 }
 
 .screen.active {
@@ -48,6 +48,7 @@ body {
 }
 
 /* --- Pre-Splash, Splash & Title Screens --- */
+/* (These styles are unchanged) */
 #pre-splash-screen {
     justify-content: center;
     align-items: center;
@@ -69,21 +70,17 @@ body {
     width: 100%;
     max-width: 400px;
 }
-
-
 #splash-screen, #title-screen {
     justify-content: center;
     align-items: center;
     text-align: center;
     background-color: #4a678a;
     color: white;
-    padding: 20px; /* Add padding for small screens */
+    padding: 20px; 
 }
-
 #splash-screen h1 {
     font-size: 2.5em;
 }
-
 #title-screen h1 {
     font-size: 4em;
     margin-bottom: 0;
@@ -94,13 +91,14 @@ body {
 }
 
 /* --- Menu & End Screens --- */
+/* (These styles are unchanged, but we add overflow-y for them) */
 #menu-screen, #end-screen {
     justify-content: center;
     align-items: center;
     text-align: center;
     padding: 20px;
+    overflow-y: auto; /* Allow menus to scroll if needed on tiny screens */
 }
-
 .menu-content {
     width: 100%;
     max-width: 400px;
@@ -108,12 +106,10 @@ body {
     flex-direction: column;
     gap: 15px;
 }
-
 .menu-content h1 {
     font-size: 2.5em;
     color: #4a678a;
 }
-
 #end-summary-text {
     font-size: 1.1em;
     line-height: 1.6;
@@ -122,9 +118,8 @@ body {
     padding: 15px;
     border-radius: 8px;
     border: 1px solid #eee;
-    text-align: left; /* Better for reading a paragraph */
+    text-align: left; 
 }
-
 .menu-button {
     padding: 15px;
     font-size: 1.2em;
@@ -137,15 +132,12 @@ body {
     transition: background-color 0.2s;
     z-index: 2; 
 }
-
 .menu-button:hover {
     background-color: #4a678a;
 }
-
 .toggle-button.off {
     background-color: #95a5a6; 
 }
-
 .credits-footer {
     padding: 15px 0 0 0;
     text-align: center;
@@ -161,6 +153,7 @@ body {
     color: white;
     padding: 20px 25px;
     text-align: center;
+    flex-shrink: 0; /* NEW: Prevents header from shrinking */
 }
 
 #game-screen header h1 {
@@ -168,18 +161,25 @@ body {
     font-size: 1.5em;
 }
 
+/* NEW: This wrapper will contain all scrolling game content */
+.game-content-wrapper {
+    flex-grow: 1; /* NEW: Takes up all available space */
+    overflow-y: auto; /* NEW: This part will scroll */
+    min-height: 0; /* NEW: Critical fix for flexbox scrolling */
+}
+
 #game-screen #status-meters {
     display: flex;
-    /* On desktop, they are side-by-side */
     flex-direction: row; 
     justify-content: space-around;
     padding: 20px;
     background: #fafafa;
     border-bottom: 1px solid #eee;
+    flex-shrink: 0; /* NEW: Prevents this from shrinking */
 }
 
 #game-screen .meter {
-    flex-basis: 150px; /* Each meter tries to be 150px wide */
+    flex-basis: 150px; 
     text-align: center;
 }
 
@@ -211,6 +211,7 @@ body {
     font-size: 1.1em;
     line-height: 1.6;
     min-height: 100px;
+    flex-shrink: 0; /* NEW: Prevents this from shrinking */
 }
 
 #game-screen #choices-container {
@@ -219,6 +220,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    flex-shrink: 0; /* NEW: Prevents this from shrinking */
 }
 
 #game-screen .choice-button {
@@ -241,7 +243,7 @@ body {
 
 #game-screen #last-effect-container {
     display: flex;
-    flex-direction: row; /* Side-by-side on desktop */
+    flex-direction: row; 
     justify-content: center;
     align-items: center;
     gap: 25px;
@@ -249,6 +251,7 @@ body {
     font-size: 1.1em;
     font-weight: bold;
     min-height: 30px; 
+    flex-shrink: 0; /* NEW: Prevents this from shrinking */
 }
 
 #game-screen .effect-span {
@@ -259,19 +262,15 @@ body {
 
 
 /* ================================================================
- V V V V V V V V V V  NEW RESPONSIVE STYLES  V V V V V V V V V V
+ V V V V V V V V V V  RESPONSIVE STYLES  V V V V V V V V V V
 ================================================================
- This block says: "IF the browser window is 600px wide or less,
- apply these override styles."
 */
 @media (max-width: 600px) {
     
-    /* Make the padding on the page smaller */
     body {
         padding: 10px;
     }
 
-    /* Make the container fill the height of the phone screen */
     #app-container {
         min-height: 95vh;
     }
@@ -279,46 +278,42 @@ body {
     /* --- Make all the big fonts smaller --- */
     #pre-splash-screen h1,
     #title-screen h1 {
-        font-size: 2.8em; /* Was 4em */
+        font-size: 2.8em; 
     }
 
     #pre-splash-screen p,
     #title-screen p {
-        font-size: 1.2em; /* Was 1.5em */
+        font-size: 1.2em; 
     }
 
     #splash-screen h1,
     .menu-content h1 {
-        font-size: 2.2em; /* Was 2.5em */
+        font-size: 2.2em; 
     }
 
     .menu-button {
-        font-size: 1em; /* Was 1.2em */
+        font-size: 1em; 
         padding: 12px;
     }
 
     /* --- Fix the Game Screen Layout --- */
-
-    /* This is the BIG ONE: Stack the meters vertically */
     #game-screen #status-meters {
-        flex-direction: column; /* Stack them! */
-        gap: 15px; /* Add space between them */
-        align-items: center; /* Center them */
+        flex-direction: column; 
+        gap: 15px; 
+        align-items: center; 
     }
 
-    /* Let the meters take up more width */
     #game-screen .meter {
-        flex-basis: auto; /* Ignore the old 150px */
-        width: 90%; /* Make them 90% of the container width */
+        flex-basis: auto; 
+        width: 90%; 
     }
 
-    /* Stack the effect icons vertically too */
     #game-screen #last-effect-container {
-        flex-direction: column; /* Stack them! */
+        flex-direction: column; 
         gap: 10px;
     }
 
-    /* Reduce padding on game text */
+    /* (No changes needed for padding, it's inside the scroller now) */
     #game-screen #scenario-container {
         padding: 20px 15px 15px 15px;
         font-size: 1em;

@@ -54,40 +54,43 @@
             <header>
                 <h1>EcoSim: The 10-Year Challenge</h1>
             </header>
-
-            <div id="status-meters">
-                <div class="meter">
-                    <label>🌳 Environment</label>
-                    <div class="meter-bar-outer">
-                        <div id="env-meter-bar" class="meter-bar-inner"></div>
+            
+            <!-- NEW WRAPPER: This div will handle the scrolling -->
+            <div class="game-content-wrapper">
+                <div id="status-meters">
+                    <div class="meter">
+                        <label>🌳 Environment</label>
+                        <div class="meter-bar-outer">
+                            <div id="env-meter-bar" class="meter-bar-inner"></div>
+                        </div>
+                        <span id="env-value">80%</span>
                     </div>
-                    <span id="env-value">80%</span>
-                </div>
-                <div class="meter">
-                    <label>💰 Economy</label>
-                    <div class="meter-bar-outer">
-                        <div id="eco-meter-bar" class="meter-bar-inner"></div>
+                    <div class="meter">
+                        <label>💰 Economy</label>
+                        <div class="meter-bar-outer">
+                            <div id="eco-meter-bar" class="meter-bar-inner"></div>
+                        </div>
+                        <span id="eco-value">50%</span>
                     </div>
-                    <span id="eco-value">50%</span>
-                </div>
-                <div class="meter">
-                    <label>😊 Happiness</label>
-                    <div class="meter-bar-outer">
-                        <div id="hap-meter-bar" class="meter-bar-inner"></div>
+                    <div class="meter">
+                        <label>😊 Happiness</label>
+                        <div class="meter-bar-outer">
+                            <div id="hap-meter-bar" class="meter-bar-inner"></div>
+                        </div>
+                        <span id="hap-value">50%</span>
                     </div>
-                    <span id="hap-value">50%</span>
                 </div>
-            </div>
 
-            <div id="last-effect-container"></div>
+                <div id="last-effect-container"></div>
 
-            <div id="scenario-container">
-                <p id="scenario-text">Loading...</p>
-            </div>
+                <div id="scenario-container">
+                    <p id="scenario-text">Loading...</p>
+                </div>
 
-            <div id="choices-container">
-                <!-- Buttons will be dynamically added here by JavaScript -->
-            </div>
+                <div id="choices-container">
+                    <!-- Buttons will be dynamically added here by JavaScript -->
+                </div>
+            </div> <!-- End of new wrapper -->
         </div>
 
         <!-- 5. The End Screen -->
