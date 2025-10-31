@@ -9,12 +9,12 @@ body {
     min-height: 100vh;
     padding: 20px;
     margin: 0;
-    box-sizing: border-box;
+    box-sizing: border-box; /* This helps with sizing */
 }
 
 #app-container {
-    width: 100%;
-    max-width: 700px;
+    width: 100%; /* Be 100% of the parent (the padded body) */
+    max-width: 700px; /* But don't get wider than 700px */
     background: #fff;
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -37,6 +37,7 @@ body {
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+    box-sizing: border-box; /* Ensures padding is included in height/width */
 }
 
 .screen.active {
@@ -75,6 +76,7 @@ body {
     text-align: center;
     background-color: #4a678a;
     color: white;
+    padding: 20px; /* Add padding for small screens */
 }
 
 #splash-screen h1 {
@@ -119,6 +121,7 @@ body {
     padding: 15px;
     border-radius: 8px;
     border: 1px solid #eee;
+    text-align: left; /* Better for reading a paragraph */
 }
 
 .menu-button {
@@ -166,6 +169,8 @@ body {
 
 #game-screen #status-meters {
     display: flex;
+    /* On desktop, they are side-by-side */
+    flex-direction: row; 
     justify-content: space-around;
     padding: 20px;
     background: #fafafa;
@@ -173,7 +178,7 @@ body {
 }
 
 #game-screen .meter {
-    flex-basis: 150px;
+    flex-basis: 150px; /* Each meter tries to be 150px wide */
     text-align: center;
 }
 
@@ -235,6 +240,7 @@ body {
 
 #game-screen #last-effect-container {
     display: flex;
+    flex-direction: row; /* Side-by-side on desktop */
     justify-content: center;
     align-items: center;
     gap: 25px;
@@ -248,5 +254,86 @@ body {
     padding: 5px 10px;
     border-radius: 5px;
     background-color: #f0f0f0;
+}
+
+
+/* ================================================================
+ V V V V V V V V V V  NEW RESPONSIVE STYLES  V V V V V V V V V V
+================================================================
+ This block says: "IF the browser window is 600px wide or less,
+ apply these override styles."
+*/
+@media (max-width: 600px) {
+    
+    /* Make the padding on the page smaller */
+    body {
+        padding: 10px;
+    }
+
+    /* Make the container fill the height of the phone screen */
+    #app-container {
+        min-height: 95vh;
+    }
+
+    /* --- Make all the big fonts smaller --- */
+    #pre-splash-screen h1,
+    #title-screen h1 {
+        font-size: 2.8em; /* Was 4em */
+    }
+
+    #pre-splash-screen p,
+    #title-screen p {
+        font-size: 1.2em; /* Was 1.5em */
+    }
+
+    #splash-screen h1,
+    .menu-content h1 {
+        font-size: 2.2em; /* Was 2.5em */
+    }
+
+    .menu-button {
+        font-size: 1em; /* Was 1.2em */
+        padding: 12px;
+    }
+
+    /* --- Fix the Game Screen Layout --- */
+
+    /* This is the BIG ONE: Stack the meters vertically */
+    #game-screen #status-meters {
+        flex-direction: column; /* Stack them! */
+        gap: 15px; /* Add space between them */
+        align-items: center; /* Center them */
+    }
+
+    /* Let the meters take up more width */
+    #game-screen .meter {
+        flex-basis: auto; /* Ignore the old 150px */
+        width: 90%; /* Make them 90% of the container width */
+    }
+
+    /* Stack the effect icons vertically too */
+    #game-screen #last-effect-container {
+        flex-direction: column; /* Stack them! */
+        gap: 10px;
+    }
+
+    /* Reduce padding on game text */
+    #game-screen #scenario-container {
+        padding: 20px 15px 15px 15px;
+        font-size: 1em;
+    }
+
+    #game-screen #choices-container {
+        padding: 0 15px 15px 15px;
+    }
+
+    #game-screen .choice-button {
+        font-size: 0.9em;
+        padding: 12px;
+    }
+
+    #end-summary-text {
+        font-size: 1em;
+    }
 }
 
